@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exploratory Data Analysis — Pranith Varma Pakalapati — CMPE 255</title>
+<style>
+body{font-family:Georgia,serif;max-width:860px;margin:40px auto;padding:0 20px;color:#111;line-height:1.6}
+h1{font-size:28px;margin-bottom:4px}h2{font-size:20px;margin-top:36px;border-bottom:1px solid #ccc;padding-bottom:6px}
+a{color:#0b5394}.meta{color:#555}.card{border:1px solid #ddd;border-radius:8px;padding:16px 20px;margin:16px 0}
+.card h3{margin-top:0}.small{font-size:14px;color:#555}ul{padding-left:20px}code{font-size:14px}
+</style>
+</head>
+<body>
+<h1>Exploratory Data Analysis Assignment — Parts 1 &amp; 2</h1>
+<p class="meta">Pranith Varma Pakalapati &middot; CMPE 255, San Jos&eacute; State University, Fall 2026 &middot; Due November 17, 2026</p>
+<p>Part 1 does full EDA, visualisation, data preparation, clustering, anomaly elimination, and AutoML with AutoViML on two datasets — one tabular, one time series. Part 2 repeats EDA with an agentic AI tool instead of doing it manually. Every notebook below is executed, so every number in the reports comes from code that actually ran.</p>
+<p>Repository: <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment">github.com/pranith27/Exploratory-data-analysis-assignment</a></p>
+
+<h2>Video walkthroughs</h2>
+<p>Narrated walkthroughs of the code snippets and user journeys, in detail:</p>
+<ul>
+<li>Part 1, tabular (Airbnb) — <i>CMPE 255 EDA Part 1 &mdash; NYC Airbnb: EDA, Cleaning, Clustering &amp; AutoViML</i> (9:52) — YouTube link to be added</li>
+<li>Part 1, time series (household power) — <i>CMPE 255 EDA Part 1 &mdash; Household Power Time Series: EDA, Seasonality &amp; AutoViML</i> (11:21) — YouTube link to be added</li>
+<li>Part 2, agentic EDA — <i>CMPE 255 EDA Part 2 &mdash; Agentic EDA with AI Data Science Team</i> (9:35) — YouTube link to be added</li>
+</ul>
+
+<h2>Part 1 — Tabular: NYC Airbnb 2019</h2>
+<div class="card">
+<h3>48,895 listings &rarr; 48,825 modelling rows &middot; Predict nightly price</h3>
+<p>Price is driven by where and what kind: Manhattan median $150 vs Bronx $65, entire home/apt $160 vs shared room $45. The 10,052 missing review values are structural (zero-review listings), so 0-fill is correct. KMeans k = 3 (silhouette 0.217). AutoViML Bagging_Regressor: log-RMSE 0.424, R&sup2; 0.602, $MAE 51.44.</p>
+<p><a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-tabular-airbnb/EDA_Airbnb_NYC_Tabular.ipynb">Executed notebook (78 cells)</a> &middot; <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-tabular-airbnb/report.md">Report</a> &middot; <a href="https://colab.research.google.com/github/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-tabular-airbnb/EDA_Airbnb_NYC_Tabular.ipynb">Open in Colab</a></p>
+<p class="small">Auto-EDA: ydata-profiling + SweetViz reports in the folder. AutoViML 0.2.2 genuinely run (documented 15,000-row training subsample, full 9,765-row holdout).</p>
+</div>
+
+<h2>Part 1 — Time series: household power</h2>
+<div class="card">
+<h3>2,075,259 minute rows &rarr; 34,589 hourly rows &middot; Predict next-hour power</h3>
+<p>Strong daily shape (20:00 peak 1.899 kW, 04:00 trough 0.444 kW), weekends heavier than weekdays, December nearly triple August. ADF statistic &minus;3.666 (p = 0.0046). Daily-profile clusters k = 2. AutoViML Bagging_Regressor: RMSE 0.481 kW, R&sup2; 0.566; best baseline HistGradientBoosting 0.469 kW (naive persistence 0.593 kW).</p>
+<p><a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-timeseries-power/EDA_Household_Power_Timeseries.ipynb">Executed notebook (71 cells)</a> &middot; <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-timeseries-power/report.md">Report</a> &middot; <a href="https://colab.research.google.com/github/pranith27/Exploratory-data-analysis-assignment/blob/main/part1-timeseries-power/EDA_Household_Power_Timeseries.ipynb">Open in Colab</a></p>
+<p class="small">Time-based split (last 20% as test), leakage-guarded lag features, gap-aware imputation. AutoViML's own output files are in the folder.</p>
+</div>
+
+<h2>Part 2 — Agentic EDA: AI Data Science Team</h2>
+<div class="card">
+<h3>Slide 226 tool &middot; 10 prompts &middot; 20 tool calls &middot; 10/10 verifications passed</h3>
+<p>Supervisor + specialist agents run EDA on the same two datasets from natural-language prompts, with full prompt &rarr; plan &rarr; code &rarr; chart &rarr; insight traces. Honesty note: no LLM ran — the real library needs an API key that was not available, so Part 2 is a clearly labelled key-free reproduction of the supervisor pattern, with all numbers computed by executed code and a real-library driver included.</p>
+<p><a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part2-agentic-eda/Agentic_EDA_AI_Data_Science_Team.ipynb">Executed notebook (26 cells)</a> &middot; <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part2-agentic-eda/report.md">Report</a> &middot; <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part2-agentic-eda/agent_transcript.md">Agent transcript</a> &middot; <a href="https://github.com/pranith27/Exploratory-data-analysis-assignment/blob/main/part2-agentic-eda/user_journey.md">User journey</a></p>
+<p class="small">Tool: <a href="https://github.com/business-science/ai-data-science-team">business-science/ai-data-science-team</a>, slide 226 of the course deck (slides 222&ndash;228).</p>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li>Kaggle NYC Airbnb Open Data: <a href="https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data">kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data</a></li>
+<li>UCI household power data file: <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip">archive.ics.uci.edu</a></li>
+<li>AutoViML: <a href="https://github.com/AutoViML/Auto_ViML">github.com/AutoViML/Auto_ViML</a></li>
+<li>Course deck: <a href="https://docs.google.com/presentation/d/12V4wXjPd0ymc4tcFSsQdpeQFYdtKwzQglG81nXYEO0k/">Fall 2026 CMPE 255, Data Preparation</a></li>
+</ul>
+<p class="small">A coding agent assisted with building these notebooks, as the assignment allows; each notebook and report explains what was done and what was checked. Seed 42 throughout. Notebook error cells: 0 in all three notebooks.</p>
+</body>
+</html>

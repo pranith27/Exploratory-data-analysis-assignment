@@ -1,0 +1,552 @@
+{
+  "seed": 42,
+  "uci_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip",
+  "raw_rows": 2075259,
+  "raw_date_min": "2006-12-16 17:24:00",
+  "raw_date_max": "2010-11-26 21:02:00",
+  "nan_per_column": {
+    "Global_active_power": 25979,
+    "Global_reactive_power": 25979,
+    "Voltage": 25979,
+    "Global_intensity": 25979,
+    "Sub_metering_1": 25979,
+    "Sub_metering_2": 25979,
+    "Sub_metering_3": 25979
+  },
+  "rows_any_missing": 25979,
+  "duplicate_timestamps": 0,
+  "missing_timestamps": 0,
+  "corr_minute_gap_intensity": 0.9989,
+  "corr_minute_gap_voltage": -0.3998,
+  "nan_blocks_minute": 71,
+  "nan_block_max_minutes": 7226,
+  "nan_minutes_in_blocks_over_1day": 24647,
+  "nan_blocks_over_1day": 6,
+  "longest_blocks": [
+    {
+      "start": "2010-08-17 21:02:00",
+      "end": "2010-08-22 21:27:00",
+      "minutes": 7226
+    },
+    {
+      "start": "2010-09-25 03:56:00",
+      "end": "2010-09-28 19:12:00",
+      "minutes": 5237
+    },
+    {
+      "start": "2007-04-28 00:21:00",
+      "end": "2007-04-30 14:23:00",
+      "minutes": 3723
+    },
+    {
+      "start": "2009-06-13 00:30:00",
+      "end": "2009-06-15 07:34:00",
+      "minutes": 3305
+    },
+    {
+      "start": "2010-01-12 14:53:00",
+      "end": "2010-01-14 19:01:00",
+      "minutes": 3129
+    },
+    {
+      "start": "2010-03-20 03:52:00",
+      "end": "2010-03-21 13:38:00",
+      "minutes": 2027
+    }
+  ],
+  "hourly_rows": 34589,
+  "hourly_all_missing": 421,
+  "daily_rows": 1442,
+  "daily_all_missing": 9,
+  "daily_interp_days_for_eda": 9,
+  "adf_daily": {
+    "statistic": -3.666,
+    "p_value": 0.004622363666274188,
+    "lags": 22,
+    "nobs": 1419,
+    "crit_1pct": -3.435,
+    "crit_5pct": -2.864
+  },
+  "stl": {
+    "trend_min": 0.177,
+    "trend_max": 1.962,
+    "seasonal_min": -1.197,
+    "seasonal_max": 1.648,
+    "resid_std": 0.23,
+    "period": 7
+  },
+  "auto_eda": {
+    "tool": "ydata-profiling",
+    "mode": "minimal",
+    "rows": 34589,
+    "columns": 9,
+    "html_mb": 0.79
+  },
+  "nan_blocks_hourly": 8,
+  "nan_block_hours_sorted": [
+    119,
+    87,
+    61,
+    54,
+    52,
+    33,
+    14,
+    1
+  ],
+  "imputed_hours_total": 421,
+  "imputed_interpolated_hours": 1,
+  "imputed_median_hours": 420,
+  "imputed_share_pct": 1.22,
+  "model_rows": 34421,
+  "model_warmup_dropped": 168,
+  "model_date_min": "2006-12-23 17:00:00",
+  "model_date_max": "2010-11-26 21:00:00",
+  "split": {
+    "method": "time-based, last 20% as test, no shuffle",
+    "train_rows": 27536,
+    "test_rows": 6885,
+    "cutoff": "2010-02-13 01:00:00",
+    "train_min": "2006-12-23 17:00:00",
+    "train_max": "2010-02-13 00:00:00",
+    "test_min": "2010-02-13 01:00:00",
+    "test_max": "2010-11-26 21:00:00"
+  },
+  "feature_selection": {
+    "correlation": {
+      "hour": 0.34,
+      "dayofweek": 0.084,
+      "month": -0.043,
+      "is_weekend": 0.107,
+      "hour_sin": -0.229,
+      "hour_cos": -0.12,
+      "dow_sin": -0.072,
+      "dow_cos": 0.021,
+      "gap_lag1": 0.718,
+      "gap_lag2": 0.471,
+      "gap_lag3": 0.29,
+      "gap_lag24": 0.435,
+      "gap_lag25": 0.386,
+      "gap_lag168": 0.47,
+      "roll24_mean": 0.357,
+      "roll24_std": 0.32,
+      "roll168_mean": 0.327,
+      "sub1_lag24": 0.156,
+      "sub2_lag24": 0.07,
+      "sub3_lag24": 0.287,
+      "volt_lag24": -0.182,
+      "imputed": -0.011
+    },
+    "mutual_information": {
+      "gap_lag1": 0.565,
+      "gap_lag2": 0.29,
+      "gap_lag24": 0.236,
+      "hour": 0.221,
+      "gap_lag168": 0.213,
+      "gap_lag25": 0.202,
+      "roll168_mean": 0.198,
+      "roll24_mean": 0.191,
+      "gap_lag3": 0.177,
+      "roll24_std": 0.149,
+      "month": 0.137,
+      "sub3_lag24": 0.101,
+      "hour_cos": 0.074,
+      "hour_sin": 0.064,
+      "volt_lag24": 0.059,
+      "sub1_lag24": 0.019,
+      "sub2_lag24": 0.019,
+      "dow_sin": 0.015,
+      "dayofweek": 0.015,
+      "is_weekend": 0.011,
+      "dow_cos": 0.005,
+      "imputed": 0.004
+    },
+    "rf_importance": {
+      "gap_lag1": 0.552,
+      "gap_lag168": 0.056,
+      "gap_lag2": 0.034,
+      "gap_lag24": 0.034,
+      "hour_sin": 0.032,
+      "roll168_mean": 0.03,
+      "gap_lag3": 0.03,
+      "volt_lag24": 0.029,
+      "hour": 0.027,
+      "roll24_mean": 0.025,
+      "roll24_std": 0.025,
+      "hour_cos": 0.025,
+      "gap_lag25": 0.024,
+      "sub3_lag24": 0.018,
+      "sub2_lag24": 0.017,
+      "month": 0.012,
+      "dow_sin": 0.01,
+      "dayofweek": 0.008,
+      "sub1_lag24": 0.007,
+      "dow_cos": 0.004,
+      "is_weekend": 0.002,
+      "imputed": 0.0
+    }
+  },
+  "features_all": [
+    "hour",
+    "dayofweek",
+    "month",
+    "is_weekend",
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos",
+    "gap_lag1",
+    "gap_lag2",
+    "gap_lag3",
+    "gap_lag24",
+    "gap_lag25",
+    "gap_lag168",
+    "roll24_mean",
+    "roll24_std",
+    "roll168_mean",
+    "sub1_lag24",
+    "sub2_lag24",
+    "sub3_lag24",
+    "volt_lag24",
+    "imputed"
+  ],
+  "features_final": [
+    "hour",
+    "month",
+    "is_weekend",
+    "hour_sin",
+    "hour_cos",
+    "gap_lag1",
+    "gap_lag2",
+    "gap_lag3",
+    "gap_lag24",
+    "gap_lag25",
+    "gap_lag168",
+    "roll24_mean",
+    "roll24_std",
+    "roll168_mean",
+    "sub1_lag24",
+    "sub2_lag24",
+    "sub3_lag24",
+    "volt_lag24"
+  ],
+  "features_dropped": [
+    "dayofweek",
+    "dow_sin",
+    "dow_cos",
+    "imputed"
+  ],
+  "clustering_days_total": 1442,
+  "clustering_days_kept": 1419,
+  "clustering_days_excluded": 23,
+  "kmeans": {
+    "inertia": {
+      "2": 28230.4,
+      "3": 24533.5,
+      "4": 22273.0,
+      "5": 21232.4,
+      "6": 20335.5,
+      "7": 19543.0,
+      "8": 18874.9
+    },
+    "silhouette": {
+      "2": 0.203,
+      "3": 0.164,
+      "4": 0.134,
+      "5": 0.132,
+      "6": 0.119,
+      "7": 0.093,
+      "8": 0.093
+    },
+    "best_k": 2
+  },
+  "cluster_summary": [
+    {
+      "cluster": 0,
+      "days": 915,
+      "mean_daily_kwh_approx": 20.61,
+      "mean_kw": 0.859,
+      "peak_hour": 21,
+      "peak_kw": 1.56,
+      "trough_hour": 3,
+      "weekend_share_pct": 19.3
+    },
+    {
+      "cluster": 1,
+      "days": 504,
+      "mean_daily_kwh_approx": 36.31,
+      "mean_kw": 1.513,
+      "peak_hour": 20,
+      "peak_kw": 2.636,
+      "trough_hour": 4,
+      "weekend_share_pct": 44.4
+    }
+  ],
+  "cluster_silhouette": 0.203,
+  "gmm": {
+    "k": 2,
+    "bic": 86202.6,
+    "ari_vs_kmeans": 0.498,
+    "sizes": {
+      "0": 507,
+      "1": 912
+    }
+  },
+  "anomalies": {
+    "isolation_forest": 346,
+    "rolling_z": 140,
+    "iqr": 738,
+    "if_and_roll": 77,
+    "if_and_iqr": 310,
+    "roll_and_iqr": 93,
+    "all_three": 73,
+    "any_method": 817,
+    "sensor_like_voltage_extreme": 28,
+    "real_event_like": 381,
+    "both_methods_train_removed": 66
+  },
+  "train_rows_clean": 27470,
+  "baselines": [
+    {
+      "model": "Naive: persistence (lag-1h)",
+      "source": "naive baseline",
+      "RMSE": 0.5926,
+      "MAE": 0.3879,
+      "R2": 0.3412
+    },
+    {
+      "model": "Naive: seasonal (lag-168h, same hour last week)",
+      "source": "naive baseline",
+      "RMSE": 0.806,
+      "MAE": 0.5586,
+      "R2": -0.2187
+    },
+    {
+      "model": "Ridge (scaled)",
+      "source": "sklearn baseline",
+      "RMSE": 0.5013,
+      "MAE": 0.3504,
+      "R2": 0.5285
+    },
+    {
+      "model": "RandomForest (200 trees)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4755,
+      "MAE": 0.3257,
+      "R2": 0.5758
+    },
+    {
+      "model": "HistGradientBoosting (anomaly-cleaned train)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4693,
+      "MAE": 0.3204,
+      "R2": 0.5868
+    },
+    {
+      "model": "HistGradientBoosting (full train, anomalies kept)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4703,
+      "MAE": 0.3226,
+      "R2": 0.585
+    }
+  ],
+  "autoviml": {
+    "version": "0.2.2",
+    "model_type": "LinearSVR",
+    "model_repr": "LinearSVR(C=92.89483920955792, epsilon=0.3954540443458203, max_iter=4000,\n          random_state=99, tol=0.001)",
+    "selected_features": [
+      "gap_lag1",
+      "hour",
+      "gap_lag24",
+      "is_weekend",
+      "hour_cos",
+      "roll168_mean",
+      "hour_sin",
+      "gap_lag3",
+      "gap_lag168",
+      "month",
+      "volt_lag24",
+      "sub2_lag24",
+      "sub3_lag24"
+    ],
+    "hyper_param": "RS",
+    "scoring_parameter": "rmse",
+    "train_rows": 27470,
+    "test_rows": 6885,
+    "leaderboard_test": [
+      {
+        "model": "AutoViML: Bagging_Regressor",
+        "source": "AutoViML",
+        "RMSE": 0.481,
+        "MAE": 0.3324,
+        "R2": 0.5659
+      },
+      {
+        "model": "AutoViML: Ensembled",
+        "source": "AutoViML",
+        "RMSE": 0.4882,
+        "MAE": 0.3587,
+        "R2": 0.5529
+      },
+      {
+        "model": "AutoViML: Linear",
+        "source": "AutoViML",
+        "RMSE": 0.509,
+        "MAE": 0.3545,
+        "R2": 0.5139
+      },
+      {
+        "model": "AutoViML: chosen model",
+        "source": "AutoViML",
+        "RMSE": 0.509,
+        "MAE": 0.3545,
+        "R2": 0.5139
+      },
+      {
+        "model": "AutoViML: Decision_Tree",
+        "source": "AutoViML",
+        "RMSE": 0.5098,
+        "MAE": 0.3542,
+        "R2": 0.5125
+      },
+      {
+        "model": "AutoViML: KNN_Regressor",
+        "source": "AutoViML",
+        "RMSE": 0.5238,
+        "MAE": 0.3629,
+        "R2": 0.4853
+      },
+      {
+        "model": "AutoViML: Adaboost",
+        "source": "AutoViML",
+        "RMSE": 0.7495,
+        "MAE": 0.658,
+        "R2": -0.0538
+      }
+    ],
+    "best": {
+      "model": "AutoViML: Bagging_Regressor",
+      "source": "AutoViML",
+      "RMSE": 0.481,
+      "MAE": 0.3324,
+      "R2": 0.5659
+    },
+    "residual_mean": 0.0484,
+    "residual_std": 0.5067
+  },
+  "comparison": [
+    {
+      "model": "HistGradientBoosting (anomaly-cleaned train)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4693,
+      "MAE": 0.3204,
+      "R2": 0.5868
+    },
+    {
+      "model": "HistGradientBoosting (full train, anomalies kept)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4703,
+      "MAE": 0.3226,
+      "R2": 0.585
+    },
+    {
+      "model": "RandomForest (200 trees)",
+      "source": "sklearn baseline",
+      "RMSE": 0.4755,
+      "MAE": 0.3257,
+      "R2": 0.5758
+    },
+    {
+      "model": "AutoViML: Bagging_Regressor",
+      "source": "AutoViML",
+      "RMSE": 0.481,
+      "MAE": 0.3324,
+      "R2": 0.5659
+    },
+    {
+      "model": "AutoViML: Ensembled",
+      "source": "AutoViML",
+      "RMSE": 0.4882,
+      "MAE": 0.3587,
+      "R2": 0.5529
+    },
+    {
+      "model": "Ridge (scaled)",
+      "source": "sklearn baseline",
+      "RMSE": 0.5013,
+      "MAE": 0.3504,
+      "R2": 0.5285
+    },
+    {
+      "model": "AutoViML: Linear",
+      "source": "AutoViML",
+      "RMSE": 0.509,
+      "MAE": 0.3545,
+      "R2": 0.5139
+    },
+    {
+      "model": "AutoViML: chosen model",
+      "source": "AutoViML",
+      "RMSE": 0.509,
+      "MAE": 0.3545,
+      "R2": 0.5139
+    },
+    {
+      "model": "AutoViML: Decision_Tree",
+      "source": "AutoViML",
+      "RMSE": 0.5098,
+      "MAE": 0.3542,
+      "R2": 0.5125
+    },
+    {
+      "model": "AutoViML: KNN_Regressor",
+      "source": "AutoViML",
+      "RMSE": 0.5238,
+      "MAE": 0.3629,
+      "R2": 0.4853
+    },
+    {
+      "model": "Naive: persistence (lag-1h)",
+      "source": "naive baseline",
+      "RMSE": 0.5926,
+      "MAE": 0.3879,
+      "R2": 0.3412
+    },
+    {
+      "model": "AutoViML: Adaboost",
+      "source": "AutoViML",
+      "RMSE": 0.7495,
+      "MAE": 0.658,
+      "R2": -0.0538
+    },
+    {
+      "model": "Naive: seasonal (lag-168h, same hour last week)",
+      "source": "naive baseline",
+      "RMSE": 0.806,
+      "MAE": 0.5586,
+      "R2": -0.2187
+    }
+  ],
+  "versions": {
+    "pandas": "2.2.3",
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.2",
+    "seaborn": "0.13.2",
+    "scikit-learn": "1.5.2",
+    "statsmodels": "0.14.4",
+    "scipy": "1.11.4",
+    "ydata-profiling": "4.12.2",
+    "autoviml": "0.2.2",
+    "IPython": "8.26.0",
+    "nbformat": "5.11.1",
+    "nbconvert": "7.17.2"
+  },
+  "row_count_ledger": {
+    "raw_minute_rows": 2075259,
+    "hourly_rows": 34589,
+    "daily_rows": 1442,
+    "modelling_rows": 34421,
+    "train_rows_full": 27536,
+    "train_rows_clean": 27470,
+    "test_rows": 6885
+  }
+}

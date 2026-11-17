@@ -1,0 +1,269 @@
+{
+  "dataset": "NYC Airbnb Open Data 2019 (Kaggle dgomonov/new-york-city-airbnb-open-data)",
+  "source_url_used": "https://raw.githubusercontent.com/RonBalaban/CUNY-SPS-R/main/AB_NYC_2019.csv",
+  "target": "price (modelled as log1p(price))",
+  "seed": 42,
+  "row_counts": {
+    "raw": 48895,
+    "after_dropping_zero_prices": 48884,
+    "after_review_missingness_handling": 48884,
+    "after_rare_neighbourhood_grouping": 48884,
+    "after_anomaly_removal": 48825
+  },
+  "modelling_rows": 48825,
+  "missingness": {
+    "id": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "name": {
+      "missing_count": 16,
+      "missing_pct": 0.03
+    },
+    "host_id": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "host_name": {
+      "missing_count": 21,
+      "missing_pct": 0.04
+    },
+    "neighbourhood_group": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "neighbourhood": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "latitude": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "longitude": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "room_type": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "price": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "minimum_nights": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "number_of_reviews": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "last_review": {
+      "missing_count": 10052,
+      "missing_pct": 20.56
+    },
+    "reviews_per_month": {
+      "missing_count": 10052,
+      "missing_pct": 20.56
+    },
+    "calculated_host_listings_count": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "availability_365": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    }
+  },
+  "clusters": {
+    "best_k": 3,
+    "silhouettes": {
+      "2": 0.1856,
+      "3": 0.2174,
+      "4": 0.1809,
+      "5": 0.1772,
+      "6": 0.1795,
+      "7": 0.1849,
+      "8": 0.181
+    },
+    "inertias": {
+      "2": 371754.7,
+      "3": 318257.7,
+      "4": 283420.4,
+      "5": 257437.1,
+      "6": 238953.2,
+      "7": 222684.4,
+      "8": 209890.6
+    },
+    "kmeans_sizes": {
+      "0": 16264,
+      "1": 4319,
+      "2": 28301
+    },
+    "gmm_bic": 644818.6609357292,
+    "ari_kmeans_gmm": 0.1473
+  },
+  "anomalies": {
+    "if_outliers": 978,
+    "iqr_price": 2972,
+    "iqr_logprice": 626,
+    "iqr_minnights": 6605,
+    "both_if_iqr": 36,
+    "removed": 59,
+    "min_nights_cap": 45.0,
+    "n_capped": 469,
+    "rows_before": 48884,
+    "rows_after": 48825,
+    "price_mean_before": 152.76,
+    "price_mean_after": 148.12,
+    "price_median_before": 106.0,
+    "price_median_after": 105.0
+  },
+  "autoviml": {
+    "version": "0.2.2",
+    "model_type": "LinearSVR",
+    "features_kept": [
+      "room_type",
+      "neighbourhood_group",
+      "distance_to_midtown_km",
+      "longitude",
+      "latitude",
+      "min_nights_band",
+      "review_density",
+      "availability_365",
+      "log_minimum_nights",
+      "host_listing_size_band",
+      "neighbourhood_freq",
+      "calculated_host_listings_count",
+      "minimum_nights",
+      "is_never_reviewed",
+      "number_of_reviews",
+      "days_since_last_review"
+    ],
+    "leaderboard": [
+      {
+        "source": "AutoViML",
+        "model": "Bagging_Regressor",
+        "rmse_log": 0.424,
+        "mae_log": 0.3109,
+        "r2_log": 0.602,
+        "rmse_usd": 125.206,
+        "mae_usd": 51.435,
+        "r2_usd": 0.3035
+      },
+      {
+        "source": "AutoViML",
+        "model": "Ensembled",
+        "rmse_log": 0.4395,
+        "mae_log": 0.3308,
+        "r2_log": 0.5725,
+        "rmse_usd": 129.2436,
+        "mae_usd": 53.1464,
+        "r2_usd": 0.2578
+      },
+      {
+        "source": "AutoViML",
+        "model": "KNN_Regressor",
+        "rmse_log": 0.4545,
+        "mae_log": 0.337,
+        "r2_log": 0.5428,
+        "rmse_usd": 129.426,
+        "mae_usd": 55.0145,
+        "r2_usd": 0.2557
+      },
+      {
+        "source": "AutoViML",
+        "model": "Decision_Tree",
+        "rmse_log": 0.456,
+        "mae_log": 0.3385,
+        "r2_log": 0.5397,
+        "rmse_usd": 132.5772,
+        "mae_usd": 55.1186,
+        "r2_usd": 0.219
+      },
+      {
+        "source": "AutoViML",
+        "model": "predictions",
+        "rmse_log": 0.4607,
+        "mae_log": 0.3482,
+        "r2_log": 0.5302,
+        "rmse_usd": 130.8903,
+        "mae_usd": 55.2738,
+        "r2_usd": 0.2388
+      },
+      {
+        "source": "AutoViML",
+        "model": "Linear",
+        "rmse_log": 0.4607,
+        "mae_log": 0.3482,
+        "r2_log": 0.5302,
+        "rmse_usd": 130.8903,
+        "mae_usd": 55.2738,
+        "r2_usd": 0.2388
+      },
+      {
+        "source": "AutoViML",
+        "model": "Adaboost",
+        "rmse_log": 0.5616,
+        "mae_log": 0.4446,
+        "r2_log": 0.3018,
+        "rmse_usd": 135.9376,
+        "mae_usd": 65.9677,
+        "r2_usd": 0.1789
+      }
+    ]
+  },
+  "sklearn_baselines": [
+    {
+      "source": "sklearn baseline",
+      "model": "Ridge (linear)",
+      "rmse_log": 0.4363,
+      "mae_log": 0.3243,
+      "r2_log": 0.5786,
+      "rmse_usd": 129.4601,
+      "mae_usd": 53.1454,
+      "r2_usd": 0.2553
+    },
+    {
+      "source": "sklearn baseline",
+      "model": "RandomForest",
+      "rmse_log": 0.41,
+      "mae_log": 0.2986,
+      "r2_log": 0.6278,
+      "rmse_usd": 122.1894,
+      "mae_usd": 49.5215,
+      "r2_usd": 0.3366
+    },
+    {
+      "source": "sklearn baseline",
+      "model": "HistGradientBoosting",
+      "rmse_log": 0.4093,
+      "mae_log": 0.3009,
+      "r2_log": 0.6291,
+      "rmse_usd": 123.6304,
+      "mae_usd": 49.8219,
+      "r2_usd": 0.3209
+    }
+  ],
+  "model_comparison_csv": "model_comparison.csv",
+  "versions": {
+    "pandas": "2.2.3",
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.2",
+    "seaborn": "0.13.2",
+    "scikit-learn": "1.5.2",
+    "scipy": "1.11.4",
+    "autoviml": "0.2.2",
+    "ydata-profiling": "4.16.1",
+    "sweetviz": "2.3.1",
+    "featurewiz": "not installed",
+    "xgboost": "1.7.6",
+    "lightgbm": "4.7.0",
+    "catboost": "1.2.8",
+    "IPython": "8.26.0",
+    "nbformat": "5.11.1",
+    "nbconvert": "7.17.2"
+  }
+}

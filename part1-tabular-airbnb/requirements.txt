@@ -1,0 +1,35 @@
+# Requirements — Part 1 Tabular (NYC Airbnb) notebook
+# Pinned versions actually used for the executed run (Python 3.12.3, Linux).
+# Install with: pip install -r requirements.txt
+#
+# Notes:
+# - IPython is pinned to 8.26.0 because autoviml 0.2.2 fails to import under
+#   IPython 9 (it imports `display` from IPython.core.display).
+# - setuptools 70.3.0 provides `pkg_resources`, needed by ydata-profiling.
+# - featurewiz is intentionally absent: it cannot build on Python 3.12
+#   (it requires building an old pandas from source). Feature selection in
+#   the notebook uses correlation + mutual information + RandomForest
+#   importance + RFE instead.
+
+pandas==2.2.3
+numpy==1.26.4
+matplotlib==3.9.2
+seaborn==0.13.2
+scikit-learn==1.5.2
+scipy==1.11.4
+nbformat==5.11.1
+nbconvert==7.17.2
+ipykernel==7.4.0
+jupyter_client==8.10.0
+IPython==8.26.0
+setuptools==70.3.0
+ydata-profiling==4.16.1
+sweetviz==2.3.1
+autoviml==0.2.2
+xgboost==1.7.6
+lightgbm==4.7.0
+catboost==1.2.8
+shap==0.49.1
+imbalanced-learn==0.14.2
+pandas-dq==1.29
+statsmodels==0.15.0

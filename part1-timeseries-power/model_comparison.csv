@@ -1,0 +1,14 @@
+model,source,RMSE,MAE,R2
+HistGradientBoosting (anomaly-cleaned train),sklearn baseline,0.4693,0.3204,0.5868
+"HistGradientBoosting (full train, anomalies kept)",sklearn baseline,0.4703,0.3226,0.585
+RandomForest (200 trees),sklearn baseline,0.4755,0.3257,0.5758
+AutoViML: Bagging_Regressor,AutoViML,0.481,0.3324,0.5659
+AutoViML: Ensembled,AutoViML,0.4882,0.3587,0.5529
+Ridge (scaled),sklearn baseline,0.5013,0.3504,0.5285
+AutoViML: Linear,AutoViML,0.509,0.3545,0.5139
+AutoViML: chosen model,AutoViML,0.509,0.3545,0.5139
+AutoViML: Decision_Tree,AutoViML,0.5098,0.3542,0.5125
+AutoViML: KNN_Regressor,AutoViML,0.5238,0.3629,0.4853
+Naive: persistence (lag-1h),naive baseline,0.5926,0.3879,0.3412
+AutoViML: Adaboost,AutoViML,0.7495,0.658,-0.0538
+"Naive: seasonal (lag-168h, same hour last week)",naive baseline,0.806,0.5586,-0.2187

@@ -1,0 +1,35 @@
+{
+  "prompt_count": 10,
+  "tool_call_count": 20,
+  "tool_calls_including_retries": 20,
+  "retries": 1,
+  "failed_first_attempts": 1,
+  "verification_checks_passed": 10,
+  "verification_checks_total": 10,
+  "prompts": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "figures": [
+    "airbnb_clusters.png",
+    "airbnb_model_importances.png",
+    "airbnb_price_by_borough_room.png",
+    "architecture.png",
+    "missingness_airbnb.png",
+    "missingness_power.png",
+    "power_correlation.png",
+    "power_daily_weekly.png",
+    "power_forecast_actual_vs_pred.png",
+    "power_trend_submeters.png"
+  ],
+  "honesty_label": "key-free local reproduction: deterministic planner, no LLM ran; all numbers computed by executed code",
+  "random_state": 42
+}
